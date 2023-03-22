@@ -203,6 +203,7 @@ def main(config):
 
     # Set current_obs as fixed start_obs or reset env
     current_obs = get_start_obs(config, start_obs, env)
+    logging.info(f"Sample a new initial state")
     current_t = 0
     current_rewards = []
 
