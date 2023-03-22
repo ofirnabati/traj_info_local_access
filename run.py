@@ -761,7 +761,7 @@ def get_next_point(
             logging.debug(
                 "exe_path_list not found. This is normal for steps where they aren't sampled"
             )
-        x_next, acq_val = acqopt.optimize(x_test)
+        x_next, acq_val = acqopt.optimize(x_test, data=data, B=50)
         dumper.add("Acquisition Function Value", acq_val)
         if config.alg.kgrl or config.alg.kg_policy:
             dumper.add("Bayes Risks", acqopt.risk_vals, verbose=False)
