@@ -320,6 +320,7 @@ def main(config):
                 dumper.add("Exploration Episode Rewards", current_rewards)
                 current_rewards = []
                 current_t = 0
+                logging.info(f"Sample a new initial state")
                 current_obs = get_start_obs(config, start_obs, env)
                 # clear action sequence if it was there (only relevant for KGRL policy, noop otherwise)
                 acqopt_params["action_sequence"] = None
