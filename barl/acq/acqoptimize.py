@@ -179,12 +179,13 @@ class PolicyAcqOptimizer(AcqOptimizer):
                 if data is not None and np.random.rand() < 0.5:
                     N = len(data.x)
                     if B < N:
-                        init_subset = np.random.choice(data.x, B, replace=False)
+                        init_subset = np.random.choice(len(data.x), B, replace=False)
                     else:
-                        init_subset = data.x
+                        init_subset = np.arange(len(data.x))
 
                     best_return_q = -np.inf
-                    for x0 in init_subset:
+                    for idx in init_subset:
+                        x0 = data.x[idx]
                         self.params.s0_sampler(x0)
                         optimum, value = self._optimize([x0])
                         if value > best_return_q:
