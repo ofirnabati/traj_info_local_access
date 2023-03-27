@@ -186,7 +186,7 @@ class PolicyAcqOptimizer(AcqOptimizer):
                     best_return_q = -np.inf
                     for idx in init_subset:
                         x0 = data.x[idx]
-                        self.params.s0_sampler(x0)
+                        self.params.s0_sampler(x0[:self.params.obs_dim])
                         optimum, value = self._optimize([x0])
                         if value > best_return_q:
                             best_return = value
