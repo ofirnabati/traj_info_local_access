@@ -2,6 +2,8 @@
 Code for optimizing acquisition functions.
 """
 import copy
+
+import ipdb
 import numpy as np
 import tensorflow as tf
 import tensorflow.keras as keras
@@ -171,6 +173,7 @@ class PolicyAcqOptimizer(AcqOptimizer):
         with Timer(
             "Optimize acquisition function using cross-entropy", level=logging.INFO
         ):
+            ipdb.set_trace()
             if x_batch is not None:
                 return self._optimize(x_batch)
             best_query, best_action_sequence, best_return = None, None, -np.inf
