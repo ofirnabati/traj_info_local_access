@@ -173,7 +173,6 @@ class PolicyAcqOptimizer(AcqOptimizer):
         with Timer(
             "Optimize acquisition function using cross-entropy", level=logging.INFO
         ):
-            ipdb.set_trace()
             if x_batch is not None:
                 return self._optimize(x_batch)
             best_query, best_action_sequence, best_return = None, None, -np.inf
@@ -189,7 +188,7 @@ class PolicyAcqOptimizer(AcqOptimizer):
                     best_return_q = -np.inf
                     for idx in init_subset:
                         x0 = data.x[idx]
-                        self.params.s0_sampler(x0[:self.params.obs_dim])
+                        self.params.s0_sampler(np.array(x0[:self.params.obs_dim]))
                         optimum, value = self._optimize([x0])
                         if value > best_return_q:
                             best_return = value
