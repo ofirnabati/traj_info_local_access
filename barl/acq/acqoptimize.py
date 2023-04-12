@@ -174,7 +174,8 @@ class PolicyAcqOptimizer(AcqOptimizer):
             "Optimize acquisition function using cross-entropy", level=logging.INFO
         ):
             if x_batch is not None:
-                return self._optimize(x_batch)
+                best_query, best_return =  self._optimize(x_batch)
+                return best_query, best_return
             best_query, best_action_sequence, best_return = None, None, -np.inf
             for i in range(self.params.num_s0_samps):
 

@@ -58,7 +58,7 @@ class LavaPathEnv(gym.Env):
         # self.timeout_steps = 200
         self.x = None
         self.x_dot = None
-        self.horizon = 200
+        self.horizon = 50
 
     def construct_obs(self):
         return np.concatenate([self.x, self.x_dot])
