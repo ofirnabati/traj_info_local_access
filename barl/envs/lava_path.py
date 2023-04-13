@@ -66,6 +66,9 @@ class LavaPathEnv(gym.Env):
     def did_intersect(self, start, end, edge):
         return start <= edge < end
 
+    def is_done(self,x):
+        return in_lava(x, self.lava_pits) and not self.enable_lava_walls
+
     def check_lava_wall_collision(self, new_x, new_x_dot):
         for lava_pit in self.lava_pits:
 

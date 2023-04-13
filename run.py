@@ -289,10 +289,11 @@ def main(config):
             )
 
         # Query function, update data
-        ipdb.set_trace()
         try:
             y_next = f([x_next])[0]
-            done = False
+            delta = y_next[-obs_dim:]
+            current_obs1 = update_fn(current_obs, delta)
+            done = env.is_done(current_obs1)
         except TypeError:
             # if the env doesn't support spot queries, simply take the action
             action = x_next[-action_dim:]
