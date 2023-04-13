@@ -200,7 +200,7 @@ class LavaPathEnv(gym.Env):
 
         # self.steps += 1
 
-        done = False  # lava or goal or (self.steps > self.timeout_steps)
+        done =  lava #or goal #or (self.steps > self.timeout_steps)
 
         # Reward at each step is the negative squared distance between the current position and the goal
         # Add negative penalty

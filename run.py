@@ -289,6 +289,7 @@ def main(config):
         # Query function, update data
         try:
             y_next = f([x_next])[0]
+            done = False
         except TypeError:
             # if the env doesn't support spot queries, simply take the action
             action = x_next[-action_dim:]
@@ -312,7 +313,7 @@ def main(config):
             reward = reward_function(x_next, current_obs)
             current_rewards.append(reward)
             logging.info(f"Reward: {reward}")
-            if current_t >= env.horizon:
+            if current_t >= env.horizon or done:
                 current_return = compute_return(current_rewards, 1.0)
                 logging.info(
                     f"Explore episode complete with return {current_return}, resetting"
