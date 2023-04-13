@@ -3,6 +3,8 @@ Main File for BARL and associated code.
 """
 from argparse import Namespace
 import logging
+
+import ipdb
 import numpy as np
 import gym
 from tqdm import trange
@@ -287,6 +289,7 @@ def main(config):
             )
 
         # Query function, update data
+        ipdb.set_trace()
         try:
             y_next = f([x_next])[0]
             done = False
