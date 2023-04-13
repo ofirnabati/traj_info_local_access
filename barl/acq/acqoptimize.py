@@ -180,6 +180,7 @@ class PolicyAcqOptimizer(AcqOptimizer):
             for i in range(self.params.num_s0_samps):
 
                 if data is not None and np.random.rand() < 0.5:
+                    logging.info(f"Sample from dataset!")
                     N = len(data.x)
                     if B < N:
                         init_subset = np.random.choice(len(data.x), B, replace=False)
