@@ -300,7 +300,7 @@ def main(config):
             next_obs, rew, done, info = env.step(action)
             y_next = next_obs - current_obs
         if done:
-            print('Episode is done!')
+            print('Episode is done!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
         x_next = np.array(x_next).astype(np.float64)
         y_next = np.array(y_next).astype(np.float64)
 
