@@ -291,7 +291,6 @@ def main(config):
         # Query function, update data
         try:
             y_next = f([x_next])[0]
-            delta = y_next[-obs_dim:]
         except TypeError:
             # if the env doesn't support spot queries, simply take the action
             action = x_next[-action_dim:]
