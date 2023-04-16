@@ -21,19 +21,19 @@ def in_lava(x, lava_pits):
 class LavaPathEnv(gym.Env):
 
     lava_penalty = -500
-    goal = np.array([0, 10])
+    goal = np.array([0, 40])
     periodic_dimensions = []
 
     # For each lava pit, we have
     lava_pits = [
-        Box(low=np.array([-10, -8]), high=np.array([-0.5, 8])),
-        Box(low=np.array([0.5, -8]), high=np.array([10, 8])),
+        Box(low=np.array([-40, -38]), high=np.array([-0.5, 38])),
+        Box(low=np.array([0.5, -38]), high=np.array([40, 38])),
     ]
 
     def __init__(self):
         # Observation space is [x, y, x_dot, y_dot]
         self.observation_space = Box(
-            low=np.array([-20, -20, -10, -10]), high=np.array([20, 20, 10, 10])
+            low=np.array([-50, -50, -10, -10]), high=np.array([50, 50, 10, 10])
         )
 
         # Action space is [F_x, F_y]
@@ -50,7 +50,7 @@ class LavaPathEnv(gym.Env):
         self.enable_lava_walls = False
 
         # Region where our agent can move, agent cannot leave this area
-        self.playable_area = Box(low=np.array([-20, -20]), high=np.array([20, 20]))
+        self.playable_area = Box(low=np.array([-50, -50]), high=np.array([50, 50]))
 
         # Minimum distance in meters from goal to be considered at_goal
         self.goal_delta = 0.5
@@ -58,7 +58,7 @@ class LavaPathEnv(gym.Env):
         # self.timeout_steps = 200
         self.x = None
         self.x_dot = None
-        self.horizon = 50
+        self.horizon = 200
 
     def construct_obs(self):
         return np.concatenate([self.x, self.x_dot])
@@ -148,7 +148,7 @@ class LavaPathEnv(gym.Env):
     def reset(self, obs=None):
         if obs is None:
             # Start at the bottom of map, centered w.r.t bridge
-            self.x = np.array([0, -10]) + np.random.uniform([-0.5, -0.5], [0.5, 0.5])
+            self.x = np.array([0, -40]) + np.random.uniform([-0.5, -0.5], [0.5, 0.5])
 
             # Start with zero velocity
             self.x_dot = np.array([0, 0])
