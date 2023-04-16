@@ -26,8 +26,8 @@ class LavaPathEnv(gym.Env):
 
     # For each lava pit, we have
     lava_pits = [
-        Box(low=np.array([-40, -38]), high=np.array([-0.5, 38])),
-        Box(low=np.array([0.5, -38]), high=np.array([40, 38])),
+        Box(low=np.array([-40, -38]), high=np.array([-0.5, 38]), dtype=np.float64),
+        Box(low=np.array([0.5, -38]), high=np.array([40, 38]), dtype=np.float64),
     ]
 
     def __init__(self):
