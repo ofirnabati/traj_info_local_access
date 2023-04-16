@@ -8,8 +8,8 @@ CB_color_cycle = ['#377eb8', '#ff7f00', '#4daf4a',
                   '#999999', '#e41a1c', '#dede00']
 sns.set_style("whitegrid")
 save_path = './result.png'
-paths=['/home/ofir/code/traj_info_local_access/experiments/latip_reacher_2023-04-03/18-43-53/seed_0/info.pkl',
-       '/home/ofir/code/traj_info_local_access/experiments/tip_reacher_2023-04-03/18-41-59/seed_0/info.pkl']
+paths=['/home/ofir/code/traj_info_local_access/experiments/latip_lava_2023-04-13/23-41-51/seed_0/info.pkl',
+       '/home/ofir/code/traj_info_local_access/experiments/tip_lava_2023-04-13/23-41-18/seed_0/info.pkl']
 labels =['latip','tip']
 
 plt.figure()
