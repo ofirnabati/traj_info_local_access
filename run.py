@@ -312,7 +312,7 @@ def main(config):
             delta = y_next[-obs_dim:]
             # current_obs will get overwritten if the episode is over
             current_obs = update_fn(current_obs, delta)
-            done = env.is_done(current_obs.astype(np.float64))
+            done = env.is_done(current_obs[:2].astype(np.float64))
             if done:
                 print('Episode is done!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
             reward = reward_function(x_next, current_obs)
