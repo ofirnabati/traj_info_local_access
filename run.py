@@ -292,15 +292,12 @@ def main(config):
         try:
             y_next = f([x_next])[0]
             delta = y_next[-obs_dim:]
-            current_obs1 = update_fn(current_obs, delta)
-            done = env.is_done(current_obs1)
         except TypeError:
             # if the env doesn't support spot queries, simply take the action
             action = x_next[-action_dim:]
             next_obs, rew, done, info = env.step(action)
             y_next = next_obs - current_obs
-        if done:
-            print('Episode is done!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+
         x_next = np.array(x_next).astype(np.float64)
         y_next = np.array(y_next).astype(np.float64)
 
@@ -316,6 +313,9 @@ def main(config):
             delta = y_next[-obs_dim:]
             # current_obs will get overwritten if the episode is over
             current_obs = update_fn(current_obs, delta)
+            done = env.is_done(current_obs.astype(np.float64))
+            if done:
+                print('Episode is done!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
             reward = reward_function(x_next, current_obs)
             current_rewards.append(reward)
             logging.info(f"Reward: {reward}")
