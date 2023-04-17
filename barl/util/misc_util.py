@@ -102,9 +102,12 @@ def batch_function(f):
     # naively batch a function by calling it on each element separately and making a list of those
     def batched_f(x_list):
         y_list = []
+        done_list = []
         for x in x_list:
-            y_list.append(f(x))
-        return y_list
+            y, done = f(x)
+            y_list.append(y)
+            done_list.append(done)
+        return y_list, done_list
 
     return batched_f
 

@@ -63,7 +63,7 @@ algo = EvolutionStrategies(algo_params)
 # Set data for model
 data = Namespace()
 data.x = [init_x]
-data.y = [f(x) for x in data.x]
+data.y = [f(x)[0] for x in data.x]
 
 # Set model details
 gp_params = get_stangp_hypers(f, domain=domain, n_samp=200)

@@ -30,9 +30,9 @@ def get_f_mpc(env, use_info_delta=False):
         env.reset(obs)
         next_obs, reward, done, info = env.step(action)
         if use_info_delta:
-            return info["delta_obs"]
+            return info["delta_obs"], done
         else:
-            return next_obs - obs
+            return next_obs - obs, done
 
     return f
 
@@ -51,10 +51,10 @@ def get_f_mpc_reward(env, use_info_delta=False):
         env.reset(obs)
         next_obs, reward, done, info = env.step(action)
         if use_info_delta:
-            delta_obs = info["delta_obs"]
+            delta_obs = info["delta_obs"], done
         else:
             delta_obs = next_obs - obs
-        return np.insert(delta_obs, 0, reward)
+        return np.insert(delta_obs, 0, reward), done
 
     return f
 

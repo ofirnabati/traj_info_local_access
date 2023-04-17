@@ -143,7 +143,7 @@ def main(config):
     test_data = Namespace()
     test_data.x = unif_random_sample_domain(domain, config.test_set_size)
     try:
-        test_data.y = f(test_data.x)
+        test_data.y,_ = f(test_data.x)
     except TypeError:
         test_data = None
 
@@ -290,7 +290,10 @@ def main(config):
 
         # Query function, update data
         try:
-            y_next = f([x_next])[0]
+            ipdb.set_trace()
+            y_next, done = f([x_next])
+            y_next = y_next[0]
+            done = done[0]
         except TypeError:
             # if the env doesn't support spot queries, simply take the action
             action = x_next[-action_dim:]
@@ -312,8 +315,7 @@ def main(config):
             delta = y_next[-obs_dim:]
             # current_obs will get overwritten if the episode is over
             current_obs = update_fn(current_obs, delta)
-            ipdb.set_trace()
-            done = env.is_done(current_obs[:2].astype(np.float64))
+            # done = env.is_done(current_obs[:2].astype(np.float64))
             if done:
                 print('Episode is done!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
             reward = reward_function(x_next, current_obs)

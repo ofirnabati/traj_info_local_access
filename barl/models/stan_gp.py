@@ -105,7 +105,7 @@ def get_stangp_hypers(f, domain=[[0.0, 10.0]], n_samp=200):
     # Construct dataset with n_samp unif random samples
     data = Namespace()
     data.x = unif_random_sample_domain(domain, n=n_samp)
-    data.y = [f(x) for x in data.x]
+    data.y = [f(x)[0] for x in data.x]
 
     # Fit params with StanGp on data
     model = StanGp(data=data)

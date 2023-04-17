@@ -41,7 +41,7 @@ class Algorithm(ABC, Base):
         """Take one step of the algorithm."""
         x = self.get_next_x()
         if x is not None:
-            y = f(x)
+            y,_ = f(x)
             self.exe_path.x.append(x)
             self.exe_path.y.append(y)
 
@@ -650,7 +650,7 @@ class BatchAlgorithm(Algorithm):
         x_batch = self.get_next_x_batch()
 
         if len(x_batch) > 0:
-            y_batch = f_batch(x_batch)
+            y_batch,_ = f_batch(x_batch)
             self.exe_path.x.extend(x_batch)
             self.exe_path.y.extend(y_batch)
 

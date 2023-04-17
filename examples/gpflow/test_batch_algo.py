@@ -127,7 +127,7 @@ f = step_northwest
 
 # Set batch version of black-box function (for running BatchAlgorithm on f)
 def f_batch(x_list):
-    return [f(x) for x in x_list]
+    return [f(x)[0] for x in x_list]
 
 
 # Set domain
