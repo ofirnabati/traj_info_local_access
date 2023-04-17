@@ -652,10 +652,9 @@ class BatchAlgorithm(Algorithm):
         x_batch = self.get_next_x_batch()
 
         if len(x_batch) > 0:
-            try:
-                y_batch, _ = f_batch(x_batch)
-            except:
-                ipdb.set_trace()
+            y_batch = f_batch(x_batch)
+            if type(y_batch[0]) is list:
+                y_batch = y_batch[0]
             self.exe_path.x.extend(x_batch)
             self.exe_path.y.extend(y_batch)
 
