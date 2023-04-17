@@ -718,6 +718,7 @@ def get_next_point(
 ):
     exe_path_list = []
     model = None
+    ipdb.set_trace()
     if len(data.x) == 0:
         return (
             np.concatenate([current_obs, action_space.sample()]),
