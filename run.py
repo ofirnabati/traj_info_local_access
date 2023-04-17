@@ -402,7 +402,7 @@ def get_initial_data(config, env, f, domain, dumper, plot_fn):
     else:
         data.x = unif_random_sample_domain(domain, config.num_init_data)
     try:
-        data.y = f(data.x)
+        data.y,_ = f(data.x)
     except TypeError:
         logging.warning("Environment doesn't seem to support teleporting")
         data.x = []
@@ -718,7 +718,6 @@ def get_next_point(
 ):
     exe_path_list = []
     model = None
-    ipdb.set_trace()
     if len(data.x) == 0:
         return (
             np.concatenate([current_obs, action_space.sample()]),
