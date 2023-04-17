@@ -289,7 +289,6 @@ def main(config):
             )
 
         # Query function, update data
-        ipdb.set_trace()
         try:
             y_next, done = f([x_next])
             y_next = y_next[0]
