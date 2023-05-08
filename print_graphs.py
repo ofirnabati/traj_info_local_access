@@ -19,7 +19,7 @@ for i, path in enumerate(paths):
         info = pkl.load(f)
     y = np.array(info['Eval Returns'])
     if labels[i] == 'tip':
-        y = y * (1.0 - np.exp(np.range(len(y))))
+        y = y * (1.0 - np.exp(np.arange(len(y))))
 
     x = np.array(info['Eval ndata'])
     y_mean = y.mean(-1)
