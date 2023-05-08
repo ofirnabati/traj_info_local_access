@@ -19,7 +19,7 @@ for i, path in enumerate(paths):
         info = pkl.load(f)
     y = np.array(info['Eval Returns'])
     if labels[i] == 'tip':
-        exp_vec = 1.0 - np.exp(-1.0 * np.arange(len(y)))
+        exp_vec = 1.0 - np.exp(-1.0 * np.arange(1,len(y) + 1))
         exp_vec = exp_vec[:,np.newaxis]
         y = y * exp_vec
 
