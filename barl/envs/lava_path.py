@@ -4,7 +4,7 @@ import numpy as np
 
 # import cv2
 import matplotlib.pyplot as plt
-# import matplotlib.patches as patches
+import matplotlib.patches as patches
 from matplotlib.backends.backend_agg import FigureCanvas
 
 
