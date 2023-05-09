@@ -42,7 +42,7 @@ class AcqOptimizer(Base):
         self.set_acqfunction(acqfunction)
         self.acqfunction.initialize()
 
-    def optimize(self, x_batch):
+    def optimize(self, x_batch, data=None, B=None):
         """
         Optimize acquisition function.
 
