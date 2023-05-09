@@ -9,8 +9,9 @@ CB_color_cycle = ['#377eb8', '#ff7f00', '#4daf4a',
 sns.set_style("whitegrid")
 save_path = './result.png'
 paths=['/home/ofir/code/traj_info_local_access/experiments/latip_long_lava_2023-05-08/17-57-00/seed_0/info.pkl',
-       '/home/ofir/code/traj_info_local_access/experiments/tip_long_lava_2023-05-08/17-56-34/seed_0/info.pkl']
-labels =['latip','tip']
+       '/home/ofir/code/traj_info_local_access/experiments/tip_long_lava_2023-05-09/20-57-29/seed_0/info.pkl',
+        '/home/ofir/code/traj_info_local_access/experiments/tip_long_lava_2023-05-08/17-56-34/seed_0/info.pkl']
+labels =['LA-TIP','BARL','TIP']
 
 plt.figure()
 
@@ -29,7 +30,7 @@ for i, path in enumerate(paths):
     plt.plot(x,y_mean,label=labels[i])
     plt.fill_between(x, y_mean + y_std, y_mean - y_std, alpha=0.1)
 
-plt.legend(loc='upper left', fontsize=10)
+plt.legend(loc='lower right', fontsize=10)
 plt.xlabel('env steps')
 plt.ylabel('value')
 plt.savefig(save_path)
