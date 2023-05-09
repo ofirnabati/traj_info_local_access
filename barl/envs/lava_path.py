@@ -3,7 +3,7 @@ from gym.spaces import Box
 import numpy as np
 
 # import cv2
-# import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 # import matplotlib.patches as patches
 from matplotlib.backends.backend_agg import FigureCanvas
 
@@ -118,7 +118,7 @@ class LavaPathEnv(gym.Env):
         return np.sum((self.x - self.goal) ** 2) < self.goal_delta
 
     def get_matplotlib_image(self):
-        # fig = plt.figure()
+        fig = plt.figure()
         canvas = FigureCanvas(fig)
         ax = fig.subplots()
 
