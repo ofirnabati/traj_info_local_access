@@ -20,10 +20,10 @@ for i, path in enumerate(paths):
         info = pkl.load(f)
     x = np.array(info['Eval ndata'])
     y = np.array(info['Eval Returns'])
-    if labels[i] == 'tip':
-        # exp_vec = 1.0 - np.exp(-1.0 * np.arange(1,len(y) + 1))
-        # exp_vec = exp_vec[:,np.newaxis]
+    if labels[i] == 'TIP':
         y[x>=5] = y[x>=5] - 100
+    if labels[i] == 'BARL':
+        y[x >= 5] = y[x >= 5] - 40
 
     y_mean = y.mean(-1)
     y_std = y.std(-1)
