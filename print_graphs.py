@@ -30,4 +30,6 @@ for i, path in enumerate(paths):
     plt.fill_between(x, y_mean + y_std, y_mean - y_std, alpha=0.1)
 
 plt.legend(loc='upper left', fontsize=10)
+plt.xlabel('env steps')
+plt.ylabel('value')
 plt.savefig(save_path)
